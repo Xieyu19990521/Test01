@@ -1,1 +1,1 @@
-include ':app', ':demo02'
+include ':app', ':demo02', ':bufferknife', ':greendao', ':text_demo01'

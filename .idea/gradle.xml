@@ -9,7 +9,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bufferknife" />
             <option value="$PROJECT_DIR$/demo02" />
+            <option value="$PROJECT_DIR$/greendao" />
+            <option value="$PROJECT_DIR$/text_demo01" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

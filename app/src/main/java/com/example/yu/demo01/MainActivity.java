@@ -29,13 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
        String url="http://a.hiphotos.baidu.com/image/pic/item/55e736d12f2eb938d3de795ad0628535e4dd6fe2.jpg";
        Uri uri=Uri.parse(url);
-        draweeView1 = findViewById(R.id.image);
         draweeView2=findViewById(R.id.image2);
         draweeView2.setImageURI(uri);
+        draweeView1 = findViewById(R.id.image);
         showUrlBlur(draweeView1,url,2,2);
 
     }
 
+    /**
+     * @Params
+     * draweeView 确定哪个控件需要做高斯模糊处理
+     * url 图片的资源
+     * iterations
+     * blurRadius 自己感觉是模糊程度  数字越大 模糊程度越大
+     */
     public static void showUrlBlur(SimpleDraweeView draweeView, String url, int iterations, int blurRadius) {
         try {
             Uri uri = Uri.parse(url);
