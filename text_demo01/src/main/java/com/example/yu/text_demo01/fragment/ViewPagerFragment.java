@@ -100,14 +100,14 @@ public class ViewPagerFragment extends Fragment implements Iview {
                 @Override
                 public void onClick(View v) {
                     MessageObject object=new MessageObject(productBean.getData().getTitle(),"title");
-                    EventBus.getDefault().post(object);
+                    EventBus.getDefault().postSticky(object);
                 }
             });
             detail_price.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     MessageObject object=new MessageObject(productBean.getData().getPrice()+"","price");
-                    EventBus.getDefault().post(object);
+                    EventBus.getDefault().postSticky(object);
                 }
             });
             handler.sendEmptyMessageDelayed(0,2000);

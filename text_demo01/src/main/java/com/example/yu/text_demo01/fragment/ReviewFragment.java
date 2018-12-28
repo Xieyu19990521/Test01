@@ -35,7 +35,7 @@ public class ReviewFragment extends Fragment {
             EventBus.getDefault().register(this);
         }
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void ToastTitle(MessageObject messageObject){
         if (messageObject.getId().equals("price")){
             textView.setText(messageObject.getObject().toString());

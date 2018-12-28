@@ -44,7 +44,7 @@ public class ShowActivity extends AppCompatActivity{
 
         viewPager=findViewById(R.id.viewpager_detail);
         tabLayout=findViewById(R.id.tab_detail);
-        viewPager.setOffscreenPageLimit(3);
+       // viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 
             String[] strings=new String[]{"商品","详情","评论"};

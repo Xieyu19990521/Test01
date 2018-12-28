@@ -35,7 +35,7 @@ public class DetailFragment extends Fragment {
             EventBus.getDefault().register(this);
         }
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void ToastTitle(MessageObject messageObject){
         if (messageObject.getId().equals("title")){
         textView.setText(messageObject.getObject().toString());
