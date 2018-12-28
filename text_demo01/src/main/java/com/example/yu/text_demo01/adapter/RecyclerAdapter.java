@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.yu.text_demo01.R;
-import com.example.yu.text_demo01.ShowActivity;
+import com.example.yu.text_demo01.activity.ShowActivity;
 import com.example.yu.text_demo01.bean.BookBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -24,8 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -59,15 +57,25 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         ViewHolder holder= (ViewHolder) viewHolder;
-        BookBean.DataBean dataBean = mlist.get(i);
+        final BookBean.DataBean dataBean = mlist.get(i);
         holder.title.setText(dataBean.getTitle());
         holder.price.setText(dataBean.getPrice()+"");
         String[] split = dataBean.getImages().split("\\|");
         Uri uri=Uri.parse(split[0]);
         holder.simpleDraweeView.setImageURI(uri);
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,ShowActivity.class);
+                intent.putExtra("pid",dataBean.getPid()+"");
+                mContext.startActivity(intent);
+            }
+        });
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public boolean onLongClick(final View v) {
+                //得到当前的视图的位置x
+                final float x = v.getX();
                 ObjectAnimator animator=ObjectAnimator.ofFloat(v,"translationX",0,-1080);
                 animator.setDuration(3000);
                 animator.setInterpolator(new AccelerateInterpolator());
@@ -83,6 +91,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         mlist.remove(i);
                         notifyDataSetChanged();
                         notifyItemRangeRemoved(i,mlist.size());
+                        //复位
+                        v.setX(x);
                     }
 
                     @Override
@@ -99,9 +109,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 return true;
             }
         });
-    }
-    public void linearLayoutOnLongClick(View view,int position){
-
     }
 
     @Override
@@ -121,14 +128,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
-
-        @OnClick(R.id.linear_item)
-        public void linearLayoutOnClick(){
-            Intent intent=new Intent(mContext,ShowActivity.class);
-            intent.putExtra("pid","45");
-            mContext.startActivity(intent);
-        }
-
 
     }
 }

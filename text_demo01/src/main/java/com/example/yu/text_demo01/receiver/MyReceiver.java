@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.yu.text_demo01.ShowActivity;
+import com.example.yu.text_demo01.activity.ShowActivity;
 
 import cn.jpush.android.api.JPushInterface;
 

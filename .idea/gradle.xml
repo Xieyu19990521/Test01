@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/demo02" />
             <option value="$PROJECT_DIR$/greendao" />
             <option value="$PROJECT_DIR$/text_demo01" />
+            <option value="$PROJECT_DIR$/text_demo02" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
